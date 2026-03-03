@@ -3,20 +3,33 @@ import java.io.FileInputStream;
 import java.time.Duration;
 import java.util.Properties;
 import Utils.Log;
-import org.openqa.selenium.support.events.EventFiringDecorator;
-import Listener.LogListener;
-
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 public class BaseClass {
 	
 	protected static WebDriver driver;
     protected Properties prop;
+    public static Logger logger;
+    
+    @BeforeClass
+	public void loggerSetUp() {
+		logger = Logger.getLogger(BaseClass.class);
+		PropertyConfigurator.configure("log4j.properties");
+		BasicConfigurator.configure();
+
+		logger.setLevel(Level.INFO);
+	}
 
     @BeforeMethod
     public void setUp() {
