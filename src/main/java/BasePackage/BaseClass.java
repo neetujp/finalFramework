@@ -22,15 +22,7 @@ public class BaseClass {
     protected Properties prop;
     public static Logger logger;
     
-    @BeforeClass
-	public void loggerSetUp() {
-		logger = Logger.getLogger(BaseClass.class);
-		PropertyConfigurator.configure("log4j.properties");
-		BasicConfigurator.configure();
-
-		logger.setLevel(Level.INFO);
-	}
-
+    
     @BeforeMethod
     public void setUp() {
 

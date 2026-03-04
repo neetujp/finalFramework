@@ -1,12 +1,14 @@
 package TestClass;
 import Utils.Log;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import BasePackage.BaseClass;
 import PageClasses.AutomationExercisePage;
 import PageClasses.LoginPage;
 
+@Listeners(Utils.TestListener.class)
 public class AutomationExerciseTest extends BaseClass {
 	
 	@Test
